@@ -77,9 +77,9 @@ resource "azurerm_network_security_group" "catapp-sg" {
 }
 
 resource "azurerm_network_interface" "catapp-nic" {
-  name                      = "${var.prefix}-catapp-nic"
-  location                  = var.location
-  resource_group_name       = azurerm_resource_group.myresourcegroup.name
+  name                = "${var.prefix}-catapp-nic"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.myresourcegroup.name
 
   ip_configuration {
     name                          = "${var.prefix}ipconfig"
@@ -137,6 +137,7 @@ resource "azurerm_virtual_machine" "catapp" {
 
   tags = {
     "Department" = "devops"
+    "Billable"   = "True"
   }
 
   # Added to allow destroy to work correctly.
